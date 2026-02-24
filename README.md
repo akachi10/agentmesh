@@ -1,26 +1,28 @@
 # AgentMesh
 
-Agent 间通信枢纽 —— 让多个 Claude Code 实例通过 Unix Domain Socket 互相交流。
+Communication hub for agents — multiple Claude Code instances collaborate via Unix Domain Sockets.
 
-## 背景
+[中文文档](README-cn.md)
 
-Claude Code 的 subagent（Task tool）是"委托模式"：
-- 人看不到中间过程
-- agent 之间无法直接通信
-- 无法控制 agent 生命周期
+## Why
 
-AgentMesh 解决这些问题，让每个 Claude Code 运行在独立 tmux 伪终端中：
-- 人通过伪终端直接和 AI 交互（正常使用 Claude Code）
-- AI 之间通过 Unix Domain Socket + MCP 通信
-- 人可以随时切换终端、观察、干预任何 agent
+Claude Code's subagent (Task tool) is a "delegation model":
+- Humans can't see intermediate steps
+- Agents can't communicate directly with each other
+- No control over agent lifecycle
 
-## 架构概览
+AgentMesh solves these problems by running each Claude Code in its own tmux pseudo-terminal:
+- Humans interact with AI directly through the terminal (normal Claude Code usage)
+- AIs communicate with each other via Unix Domain Socket + MCP
+- Humans can switch terminals at any time to observe or intervene with any agent
+
+## Architecture
 
 ```
 ┌──────────────┐                        ┌──────────────┐
 │  tmux pane A  │                        │  tmux pane B  │
 │              │                        │              │
-│ 人 ←stdin→ AI │                        │ 人 ←stdin→ AI │
+│ Human ↔ AI   │                        │ Human ↔ AI   │
 │              │                        │              │
 │ MCP Server   │                        │ MCP Server   │
 │  ↓ write     │                        │  ↓ write     │
@@ -36,9 +38,9 @@ AgentMesh 解决这些问题，让每个 Claude Code 运行在独立 tmux 伪终
       └─────────────────────────────┘
 ```
 
-## 安装
+## Install
 
-前提条件：Python >= 3.12、tmux >= 3.3、[Claude Code](https://docs.anthropic.com/en/docs/claude-code)
+Prerequisites: Python >= 3.12, tmux >= 3.3, [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
 
 ```bash
 git clone https://github.com/akachi10/agentmesh.git
@@ -46,40 +48,40 @@ cd agentmesh
 bash install.sh
 ```
 
-## 使用
+## Usage
 
 ```bash
-# 启动一个 agent
+# Start an agent
 amesh
 
-# 在另一个终端启动第二个 agent
+# Open another terminal and start a second agent
 amesh
 ```
 
-按提示输入名字（如"架构师"、"开发者"）和自定义指令，即可进入 Claude Code 会话。
+Enter a name (e.g. "architect", "developer") and optional custom instructions, then you're in a Claude Code session.
 
-AI 会自动通过 MCP 工具 `list_agents()` 和 `send_message()` 与其他 agent 通信。
+AI automatically communicates with other agents via MCP tools `list_agents()` and `send_message()`.
 
-## 卸载
+## Uninstall
 
 ```bash
 bash uninstall.sh
 ```
 
-## 文档
+## Docs
 
-- [快速上手](docs/product/quick-start.md)
-- [产品需求文档](docs/product/PRD.md)
+- [Quick Start](docs/product/quick-start-en.md) | [快速上手](docs/product/quick-start.md)
+- [PRD (中文)](docs/product/PRD.md)
 
-## 技术栈
+## Tech Stack
 
-| 项 | 选择 |
-|----|------|
-| 语言 | Python 3.12+ |
+| Component | Choice |
+|-----------|--------|
+| Language | Python 3.12+ |
 | IPC | Unix Domain Socket |
-| 终端托管 | tmux >= 3.3 |
-| AI 工具协议 | MCP (stdio) |
-| 注册表 | JSON + flock |
+| Terminal | tmux >= 3.3 |
+| AI Tool Protocol | MCP (stdio) |
+| Registry | JSON + flock |
 
 ## License
 
