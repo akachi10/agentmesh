@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentmesh"
+version = "0.1.0"
+description = "Communication hub for multiple Claude Code instances"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp>=1.26.0",
+]
+
+[project.scripts]
+amesh = "agentmesh.main:main"
+amesh-mcp = "agentmesh.mcp_server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
