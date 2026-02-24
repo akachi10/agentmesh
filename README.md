@@ -38,9 +38,13 @@ AgentMesh solves these problems by running each Claude Code in its own tmux pseu
       └─────────────────────────────┘
 ```
 
-## Install
+## Requirements
 
-Prerequisites: Python >= 3.12, tmux >= 3.3, [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
+- **Platform**: macOS (Linux support planned)
+- **AI**: [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
+- **Runtime**: Python >= 3.12, tmux >= 3.3
+
+## Install
 
 ```bash
 git clone https://github.com/akachi10/agentmesh.git

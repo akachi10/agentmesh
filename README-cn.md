@@ -38,9 +38,13 @@ AgentMesh 解决这些问题，让每个 Claude Code 运行在独立 tmux 伪终
       └─────────────────────────────┘
 ```
 
-## 安装
+## 环境要求
 
-前提条件：Python >= 3.12、tmux >= 3.3、[Claude Code](https://docs.anthropic.com/en/docs/claude-code)
+- **平台**：macOS（Linux 支持计划中）
+- **AI**：[Claude Code](https://docs.anthropic.com/en/docs/claude-code)
+- **运行时**：Python >= 3.12、tmux >= 3.3
+
+## 安装
 
 ```bash
 git clone https://github.com/akachi10/agentmesh.git
