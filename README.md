@@ -70,7 +70,7 @@ bash uninstall.sh
 
 ## Docs
 
-- [Quick Start](docs/product/quick-start-en.md) | [快速上手](docs/product/quick-start.md)
+- [Quick Start](docs/product/quick-start.md) | [快速上手](docs/product/quick-start-cn.md)
 - [PRD (中文)](docs/product/PRD.md)
 
 ## Tech Stack

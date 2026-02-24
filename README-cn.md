@@ -70,7 +70,7 @@ bash uninstall.sh
 
 ## 文档
 
-- [快速上手](docs/product/quick-start.md) | [Quick Start](docs/product/quick-start-en.md)
+- [快速上手](docs/product/quick-start-cn.md) | [Quick Start](docs/product/quick-start.md)
 - [产品需求文档](docs/product/PRD.md)
 
 ## 技术栈
